@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameHub Pro - Platform Game Online Terbaik</title>
+  <meta name="description" content="Platform game online terbaik dengan koleksi game terlengkap, turnamen, dan komunitas gamer Indonesia">
+  <meta name="keywords" content="game online, gaming, turnamen, esports, indonesia">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+        }
+        
+        .parallax {
+            transform: translateY(var(--scroll-y, 0));
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .game-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .testimonial-carousel {
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300"><!-- Header / Navbar -->
+  <header class="fixed top-0 w-full z-50 glass-effect">
+   <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+     <div class="flex items-center space-x-4">
+      <div class="text-2xl font-bold text-purple-600 dark:text-purple-400" id="site-title">
+       🎮 GameHub Pro
+      </div>
+     </div>
+     <div class="hidden md:flex items-center space-x-6"><a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors">Home</a> <a href="#games" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors">Games</a> <a href="#tournaments" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors">Tournaments</a> <a href="#community" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors">Community</a> <a href="#blog" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors">Blog</a> <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors">Contact</a>
+     </div>
+     <div class="flex items-center space-x-4"><!-- Search Bar -->
+      <div class="relative hidden lg:block"><input type="text" placeholder="Search games..." class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-purple-500"> <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+      </div><!-- Language Switcher --> <select id="language-switcher" class="bg-transparent text-gray-700 dark:text-gray-300 border-none focus:outline-none"> <option value="id">🇮🇩 ID</option> <option value="en">🇺🇸 EN</option> <option value="jp">🇯🇵 JP</option> </select> <!-- Dark Mode Toggle --> <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"> <i class="fas fa-moon dark:hidden"></i> <i class="fas fa-sun hidden dark:block"></i> </button> <!-- Mobile Menu --> <button id="mobile-menu-btn" class="md:hidden p-2"> <i class="fas fa-bars text-gray-700 dark:text-gray-300"></i> </button>
+     </div>
+    </div>
+   </nav>
+  </header><!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-40 bg-black bg-opacity-50 hidden">
+   <div class="fixed right-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-6"><button id="close-mobile-menu" class="absolute top-4 right-4"> <i class="fas fa-times text-gray-700 dark:text-gray-300"></i> </button>
+    <nav class="mt-8 space-y-4"><a href="#home" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600">Home</a> <a href="#games" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600">Games</a> <a href="#tournaments" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600">Tournaments</a> <a href="#community" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600">Community</a> <a href="#blog" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600">Blog</a> <a href="#contact" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600">Contact</a>
+    </nav>
+   </div>
+  </div><!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden">
+   <div class="absolute inset-0 bg-black opacity-30"></div>
+   <div class="container mx-auto px-4 text-center relative z-10">
+    <div class="fade-in">
+     <h1 id="hero-title" class="text-5xl md:text-7xl font-bold text-white mb-6">Discover Amazing Games</h1>
+     <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-200 mb-8">Join millions of gamers worldwide</p>
+     <div class="space-x-4"><button class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-colors"> Start Playing </button> <button class="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 rounded-full font-semibold transition-colors"> Watch Trailer </button>
+     </div>
+    </div>
+   </div><!-- Parallax Elements -->
+   <div class="absolute top-20 left-10 parallax">
+    <div class="w-20 h-20 bg-purple-500 opacity-20 rounded-full"></div>
+   </div>
+   <div class="absolute bottom-20 right-10 parallax">
+    <div class="w-32 h-32 bg-blue-500 opacity-20 rounded-full"></div>
+   </div>
+  </section><!-- Statistics Counter -->
+  <section class="py-16 bg-white dark:bg-gray-800">
+   <div class="container mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+     <div class="fade-in">
+      <div class="counter text-purple-600" data-target="1000000">
+       0
+      </div>
+      <p class="text-gray-600 dark:text-gray-400">Active Players</p>
+     </div>
+     <div class="fade-in">
+      <div class="counter text-blue-600" data-target="500">
+       0
+      </div>
+      <p class="text-gray-600 dark:text-gray-400">Games Available</p>
+     </div>
+     <div class="fade-in">
+      <div class="counter text-green-600" data-target="50">
+       0
+      </div>
+      <p class="text-gray-600 dark:text-gray-400">Tournaments</p>
+     </div>
+     <div class="fade-in">
+      <div class="counter text-red-600" data-target="24">
+       0
+      </div>
+      <p class="text-gray-600 dark:text-gray-400">Hours Support</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- About Gaming Section -->
+  <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
+   <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+     <h2 id="about-title" class="text-4xl font-bold text-gray-800 dark:text-white mb-4">About Gaming</h2>
+     <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Platform gaming terdepan yang menghubungkan jutaan gamer di seluruh dunia dengan koleksi game terlengkap dan turnamen esports terbesar.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+     <div class="fade-in">
+      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Mengapa Memilih GameHub Pro?</h3>
+      <div class="space-y-4">
+       <div class="flex items-start space-x-4">
+        <div class="bg-purple-100 dark:bg-purple-900 p-2 rounded-full"><i class="fas fa-gamepad text-purple-600"></i>
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-800 dark:text-white">Koleksi Game Terlengkap</h4>
+         <p class="text-gray-600 dark:text-gray-400">Ribuan game dari berbagai genre dan platform</p>
+        </div>
+       </div>
+       <div class="flex items-start space-x-4">
+        <div class="bg-blue-100 dark:bg-blue-900 p-2 rounded-full"><i class="fas fa-trophy text-blue-600"></i>
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-800 dark:text-white">Turnamen Esports</h4>
+         <p class="text-gray-600 dark:text-gray-400">Kompetisi rutin dengan hadiah menarik</p>
+        </div>
+       </div>
+       <div class="flex items-start space-x-4">
+        <div class="bg-green-100 dark:bg-green-900 p-2 rounded-full"><i class="fas fa-users text-green-600"></i>
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-800 dark:text-white">Komunitas Aktif</h4>
+         <p class="text-gray-600 dark:text-gray-400">Bergabung dengan jutaan gamer lainnya</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="fade-in">
+      <div class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg p-8 text-white">
+       <h3 class="text-2xl font-bold mb-4">Gaming Tips &amp; Tricks</h3>
+       <ul class="space-y-2">
+        <li>• Latih koordinasi mata dan tangan secara rutin</li>
+        <li>• Pelajari meta game dan strategi terbaru</li>
+        <li>• Bergabung dengan tim atau guild</li>
+        <li>• Gunakan peralatan gaming yang berkualitas</li>
+        <li>• Jaga kesehatan mata dan postur tubuh</li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Games Gallery -->
+  <section id="games" class="py-20 bg-white dark:bg-gray-800">
+   <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+     <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">Featured Games</h2>
+     <p class="text-xl text-gray-600 dark:text-gray-400">Discover the most popular games</p>
+    </div><!-- Game Filter -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="filter-btn active bg-purple-600 text-white px-6 py-2 rounded-full" data-filter="all">All Games</button> <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full" data-filter="action">Action</button> <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full" data-filter="strategy">Strategy</button> <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full" data-filter="rpg">RPG</button> <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full" data-filter="sports">Sports</button>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="games-grid"><!-- Game cards will be populated by JavaScript -->
+    </div>
+   </div>
+  </section><!-- Tournaments Section -->
+  <section id="tournaments" class="py-20 bg-gray-50 dark:bg-gray-900">
+   <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+     <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">Upcoming Tournaments</h2>
+     <p class="text-xl text-gray-600 dark:text-gray-400">Join competitive gaming events</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="game-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+      <div class="bg-red-500 text-white px-3 py-1 rounded-full text-sm inline-block mb-4">
+       Live
+      </div>
+      <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Mobile Legends Championship</h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-4">Prize Pool: $50,000</p>
+      <div class="flex justify-between items-center"><span class="text-sm text-gray-500">256 Teams</span> <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg">Join Now</button>
+      </div>
+     </div>
+     <div class="game-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+      <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm inline-block mb-4">
+       Upcoming
+      </div>
+      <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">PUBG Mobile Tournament</h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-4">Prize Pool: $30,000</p>
+      <div class="flex justify-between items-center"><span class="text-sm text-gray-500">128 Teams</span> <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg">Register</button>
+      </div>
+     </div>
+     <div class="game-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+      <div class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm inline-block mb-4">
+       Weekly
+      </div>
+      <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Free Fire Battle Royale</h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-4">Prize Pool: $10,000</p>
+      <div class="flex justify-between items-center"><span class="text-sm text-gray-500">64 Teams</span> <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg">View Details</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Testimonials Carousel -->
+  <section class="py-20 bg-white dark:bg-gray-800 overflow-hidden">
+   <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+     <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">What Gamers Say</h2>
+     <p class="text-xl text-gray-600 dark:text-gray-400">Reviews from our community</p>
+    </div>
+    <div class="testimonial-carousel flex space-x-8" id="testimonial-container"><!-- Testimonials will be populated by JavaScript -->
+    </div>
+   </div>
+  </section><!-- Blog Section -->
+  <section id="blog" class="py-20 bg-gray-50 dark:bg-gray-900">
+   <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+     <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">Gaming Blog</h2>
+     <p class="text-xl text-gray-600 dark:text-gray-400">Latest news and articles</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div class="h-48 bg-gradient-to-r from-purple-500 to-blue-500"></div>
+      <div class="p-6">
+       <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Top 10 Mobile Games 2024</h3>
+       <p class="text-gray-600 dark:text-gray-400 mb-4">Discover the best mobile games this year...</p>
+       <div class="flex justify-between items-center"><span class="text-sm text-gray-500">Jan 15, 2024</span> <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+       </div>
+      </div>
+     </article>
+     <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div class="h-48 bg-gradient-to-r from-green-500 to-teal-500"></div>
+      <div class="p-6">
+       <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Esports Tournament Guide</h3>
+       <p class="text-gray-600 dark:text-gray-400 mb-4">How to participate in esports tournaments...</p>
+       <div class="flex justify-between items-center"><span class="text-sm text-gray-500">Jan 12, 2024</span> <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+       </div>
+      </div>
+     </article>
+     <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div class="h-48 bg-gradient-to-r from-red-500 to-pink-500"></div>
+      <div class="p-6">
+       <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Gaming Setup Tips</h3>
+       <p class="text-gray-600 dark:text-gray-400 mb-4">Build the perfect gaming setup...</p>
+       <div class="flex justify-between items-center"><span class="text-sm text-gray-500">Jan 10, 2024</span> <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+       </div>
+      </div>
+     </article>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact" class="py-20 bg-white dark:bg-gray-800">
+   <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+     <h2 id="contact-title" class="text-4xl font-bold text-gray-800 dark:text-white mb-4">Get In Touch</h2>
+     <p class="text-xl text-gray-600 dark:text-gray-400">Have questions? We're here to help!</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12"><!-- Contact Form -->
+     <div class="fade-in">
+      <form id="contact-form" class="space-y-6">
+       <div><label for="contact-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label> <input type="text" id="contact-name" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+       </div>
+       <div><label for="contact-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label> <input type="email" id="contact-email" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+       </div>
+       <div><label for="contact-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label> <select id="contact-category" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"> <option value="">Select Category</option> <option value="general">General Inquiry</option> <option value="support">Technical Support</option> <option value="tournament">Tournament</option> <option value="partnership">Partnership</option> </select>
+       </div>
+       <div><label for="contact-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label> <textarea id="contact-message" rows="5" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
+       </div><button type="submit" id="contact-submit-btn" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-semibold transition-colors"> Send Message </button>
+      </form>
+     </div><!-- Contact Info & Map -->
+     <div class="fade-in">
+      <div class="space-y-8">
+       <div>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Contact Information</h3>
+        <div class="space-y-4">
+         <div class="flex items-center space-x-4">
+          <div class="bg-purple-100 dark:bg-purple-900 p-3 rounded-full"><i class="fas fa-map-marker-alt text-purple-600"></i>
+          </div>
+          <div>
+           <h4 class="font-semibold text-gray-800 dark:text-white">Address</h4>
+           <p class="text-gray-600 dark:text-gray-400">Jakarta, Indonesia</p>
+          </div>
+         </div>
+         <div class="flex items-center space-x-4">
+          <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full"><i class="fas fa-phone text-blue-600"></i>
+          </div>
+          <div>
+           <h4 class="font-semibold text-gray-800 dark:text-white">Phone</h4>
+           <p class="text-gray-600 dark:text-gray-400">+62 123 456 789</p>
+          </div>
+         </div>
+         <div class="flex items-center space-x-4">
+          <div class="bg-green-100 dark:bg-green-900 p-3 rounded-full"><i class="fas fa-envelope text-green-600"></i>
+          </div>
+          <div>
+           <h4 class="font-semibold text-gray-800 dark:text-white">Email</h4>
+           <p class="text-gray-600 dark:text-gray-400">info@gamehubpro.com</p>
+          </div>
+         </div>
+        </div>
+       </div><!-- Social Media Share -->
+       <div>
+        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Follow Us</h3>
+        <div class="flex space-x-4"><a href="#" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-colors"> <i class="fab fa-facebook-f"></i> </a> <a href="#" class="bg-blue-400 hover:bg-blue-500 text-white p-3 rounded-full transition-colors"> <i class="fab fa-twitter"></i> </a> <a href="#" class="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors"> <i class="fab fa-instagram"></i> </a> <a href="#" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors"> <i class="fab fa-youtube"></i> </a> <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-full transition-colors"> <i class="fab fa-discord"></i> </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Feedback Form -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-900">
+   <div class="container mx-auto px-4">
+    <div class="max-w-2xl mx-auto">
+     <div class="text-center mb-8 fade-in">
+      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Rate Your Experience</h2>
+      <p class="text-gray-600 dark:text-gray-400">Help us improve our platform</p>
+     </div>
+     <form id="feedback-form" class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+      <div class="mb-6"><label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Rating</label>
+       <div class="flex space-x-2" id="rating-stars"><button type="button" class="star text-3xl text-gray-300 hover:text-yellow-400" data-rating="1">⭐</button> <button type="button" class="star text-3xl text-gray-300 hover:text-yellow-400" data-rating="2">⭐</button> <button type="button" class="star text-3xl text-gray-300 hover:text-yellow-400" data-rating="3">⭐</button> <button type="button" class="star text-3xl text-gray-300 hover:text-yellow-400" data-rating="4">⭐</button> <button type="button" class="star text-3xl text-gray-300 hover:text-yellow-400" data-rating="5">⭐</button>
+       </div>
+      </div>
+      <div class="mb-6"><label for="feedback-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Feedback</label> <textarea id="feedback-message" rows="4" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Share your thoughts about our platform..."></textarea>
+      </div><button type="submit" id="feedback-submit-btn" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-semibold transition-colors"> Submit Feedback </button>
+     </form>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+   <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-4 gap-8">
+     <div>
+      <div class="text-2xl font-bold text-purple-400 mb-4">
+       🎮 GameHub Pro
+      </div>
+      <p class="text-gray-400 mb-4">Platform gaming terdepan untuk semua gamer Indonesia</p>
+      <div class="flex space-x-4"><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a> <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a> <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a> <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+      </div>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Games</h3>
+      <ul class="space-y-2 text-gray-400">
+       <li><a href="#" class="hover:text-white">Mobile Games</a></li>
+       <li><a href="#" class="hover:text-white">PC Games</a></li>
+       <li><a href="#" class="hover:text-white">Console Games</a></li>
+       <li><a href="#" class="hover:text-white">Browser Games</a></li>
+      </ul>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Community</h3>
+      <ul class="space-y-2 text-gray-400">
+       <li><a href="#" class="hover:text-white">Forums</a></li>
+       <li><a href="#" class="hover:text-white">Discord</a></li>
+       <li><a href="#" class="hover:text-white">Tournaments</a></li>
+       <li><a href="#" class="hover:text-white">Leaderboards</a></li>
+      </ul>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Support</h3>
+      <ul class="space-y-2 text-gray-400">
+       <li><a href="#" class="hover:text-white">Help Center</a></li>
+       <li><a href="#" class="hover:text-white">Contact Us</a></li>
+       <li><a href="#" class="hover:text-white">Bug Reports</a></li>
+       <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+      </ul>
+     </div>
+    </div>
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+     <p>© 2024 GameHub Pro. All rights reserved.</p>
+    </div>
+   </div>
+  </footer><!-- Chatbot -->
+  <div class="chatbot"><button id="chatbot-toggle" class="bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-full shadow-lg"> <i class="fas fa-comments"></i> </button>
+   <div id="chatbot-window" class="hidden fixed bottom-20 right-4 w-80 h-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700">
+    <div class="bg-purple-600 text-white p-4 rounded-t-lg">
+     <div class="flex justify-between items-center">
+      <h3 class="font-semibold">Gaming Assistant</h3><button id="chatbot-close"> <i class="fas fa-times"></i> </button>
+     </div>
+    </div>
+    <div class="p-4 h-64 overflow-y-auto" id="chatbot-messages">
+     <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg mb-2">
+      <p class="text-sm text-gray-800 dark:text-white">Hi! I'm your gaming assistant. How can I help you today?</p>
+     </div>
+    </div>
+    <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+     <div class="flex space-x-2"><input type="text" id="chatbot-input" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"> <button id="chatbot-send" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg"> <i class="fas fa-paper-plane"></i> </button>
+     </div>
+    </div>
+   </div>
+  </div><!-- Sidebar -->
+  <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform -translate-x-full transition-transform duration-300 z-40">
+   <div class="p-6">
+    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-6">Quick Links</h3>
+    <nav class="space-y-4"><a href="#home" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors"> <i class="fas fa-home mr-3"></i>Home </a> <a href="#games" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors"> <i class="fas fa-gamepad mr-3"></i>Games </a> <a href="#tournaments" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors"> <i class="fas fa-trophy mr-3"></i>Tournaments </a> <a href="#blog" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors"> <i class="fas fa-blog mr-3"></i>Blog </a> <a href="#contact" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors"> <i class="fas fa-envelope mr-3"></i>Contact </a>
+    </nav>
+   </div>
+  </div>
+  <script>
+        // Global variables
+        let currentLanguage = 'id';
+        let currentRating = 0;
+        let allData = [];
+        
+        // Default configuration
+        const defaultConfig = {
+            site_title: "🎮 GameHub Pro",
+            hero_title: "Discover Amazing Games",
+            hero_subtitle: "Join millions of gamers worldwide",
+            about_title: "About Gaming",
+            contact_title: "Get In Touch",
+            background_color: "#f9fafb",
+            surface_color: "#ffffff",
+            text_color: "#1f2937",
+            primary_action_color: "#7c3aed",
+            secondary_action_color: "#6b7280",
+            font_family: "Inter",
+            font_size: 16
+        };
+
+        // Data handler for SDK
+        const dataHandler = {
+            onDataChanged(data) {
+                allData = data;
+                updateDataDisplay();
+            }
+        };
+
+        // Initialize SDKs
+        async function initializeSDKs() {
+            if (window.dataSdk) {
+                const result = await window.dataSdk.init(dataHandler);
+                if (!result.isOk) {
+                    console.error("Failed to initialize data SDK");
+                }
+            }
+
+            if (window.elementSdk) {
+                await window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange: async (config) => {
+                        // Update site title
+                        const siteTitle = document.getElementById('site-title');
+                        if (siteTitle) {
+                            siteTitle.textContent = config.site_title || defaultConfig.site_title;
+                        }
+
+                        // Update hero section
+                        const heroTitle = document.getElementById('hero-title');
+                        const heroSubtitle = document.getElementById('hero-subtitle');
+                        if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+                        if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+
+                        // Update about title
+                        const aboutTitle = document.getElementById('about-title');
+                        if (aboutTitle) aboutTitle.textContent = config.about_title || defaultConfig.about_title;
+
+                        // Update contact title
+                        const contactTitle = document.getElementById('contact-title');
+                        if (contactTitle) contactTitle.textContent = config.contact_title || defaultConfig.contact_title;
+
+                        // Apply colors
+                        const backgroundColor = config.background_color || defaultConfig.background_color;
+                        const surfaceColor = config.surface_color || defaultConfig.surface_color;
+                        const textColor = config.text_color || defaultConfig.text_color;
+                        const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+                        const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+
+                        document.body.style.backgroundColor = backgroundColor;
+                        
+                        // Apply surface color to cards and sections
+                        const surfaceElements = document.querySelectorAll('.bg-white, .game-card');
+                        surfaceElements.forEach(el => {
+                            el.style.backgroundColor = surfaceColor;
+                        });
+
+                        // Apply text color
+                        const textElements = document.querySelectorAll('h1, h2, h3, h4, p, span');
+                        textElements.forEach(el => {
+                            if (!el.classList.contains('text-white')) {
+                                el.style.color = textColor;
+                            }
+                        });
+
+                        // Apply primary action color to buttons
+                        const primaryButtons = document.querySelectorAll('.bg-purple-600');
+                        primaryButtons.forEach(btn => {
+                            btn.style.backgroundColor = primaryActionColor;
+                        });
+
+                        // Apply font
+                        const customFont = config.font_family || defaultConfig.font_family;
+                        const baseFontStack = 'system-ui, -apple-system, sans-serif';
+                        document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+                        // Apply font size
+                        const baseSize = config.font_size || defaultConfig.font_size;
+                        document.body.style.fontSize = `${baseSize}px`;
+                        
+                        // Scale headings proportionally
+                        const h1Elements = document.querySelectorAll('h1');
+                        h1Elements.forEach(el => el.style.fontSize = `${baseSize * 2.5}px`);
+                        
+                        const h2Elements = document.querySelectorAll('h2');
+                        h2Elements.forEach(el => el.style.fontSize = `${baseSize * 2}px`);
+                        
+                        const h3Elements = document.querySelectorAll('h3');
+                        h3Elements.forEach(el => el.style.fontSize = `${baseSize * 1.5}px`);
+                    },
+                    mapToCapabilities: (config) => ({
+                        recolorables: [
+                            {
+                                get: () => config.background_color || defaultConfig.background_color,
+                                set: (value) => {
+                                    if (window.elementSdk) {
+                                        window.elementSdk.setConfig({ background_color: value });
+                                    }
+                                }
+                            },
+                            {
+                                get: () => config.surface_color || defaultConfig.surface_color,
+                                set: (value) => {
+                                    if (window.elementSdk) {
+                                        window.elementSdk.setConfig({ surface_color: value });
+                                    }
+                                }
+                            },
+                            {
+                                get: () => config.text_color || defaultConfig.text_color,
+                                set: (value) => {
+                                    if (window.elementSdk) {
+                                        window.elementSdk.setConfig({ text_color: value });
+                                    }
+                                }
+                            },
+                            {
+                                get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                                set: (value) => {
+                                    if (window.elementSdk) {
+                                        window.elementSdk.setConfig({ primary_action_color: value });
+                                    }
+                                }
+                            },
+                            {
+                                get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                                set: (value) => {
+                                    if (window.elementSdk) {
+                                        window.elementSdk.setConfig({ secondary_action_color: value });
+                                    }
+                                }
+                            }
+                        ],
+                        borderables: [],
+                        fontEditable: {
+                            get: () => config.font_family || defaultConfig.font_family,
+                            set: (value) => {
+                                if (window.elementSdk) {
+                                    window.elementSdk.setConfig({ font_family: value });
+                                }
+                            }
+                        },
+                        fontSizeable: {
+                            get: () => config.font_size || defaultConfig.font_size,
+                            set: (value) => {
+                                if (window.elementSdk) {
+                                    window.elementSdk.setConfig({ font_size: value });
+                                }
+                            }
+                        }
+                    }),
+                    mapToEditPanelValues: (config) => new Map([
+                        ["site_title", config.site_title || defaultConfig.site_title],
+                        ["hero_title", config.hero_title || defaultConfig.hero_title],
+                        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                        ["about_title", config.about_title || defaultConfig.about_title],
+                        ["contact_title", config.contact_title || defaultConfig.contact_title]
+                    ])
+                });
+            }
+        }
+
+        // Language translations
+        const translations = {
+            id: {
+                home: "Beranda",
+                games: "Game",
+                tournaments: "Turnamen",
+                community: "Komunitas",
+                blog: "Blog",
+                contact: "Kontak"
+            },
+            en: {
+                home: "Home",
+                games: "Games", 
+                tournaments: "Tournaments",
+                community: "Community",
+                blog: "Blog",
+                contact: "Contact"
+            },
+            jp: {
+                home: "ホーム",
+                games: "ゲーム",
+                tournaments: "トーナメント", 
+                community: "コミュニティ",
+                blog: "ブログ",
+                contact: "お問い合わせ"
+            }
+        };
+
+        // Sample games data
+        const gamesData = [
+            { id: 1, name: "Mobile Legends", category: "action", image: "🎮", rating: 4.8 },
+            { id: 2, name: "PUBG Mobile", category: "action", image: "🔫", rating: 4.7 },
+            { id: 3, name: "Free Fire", category: "action", image: "🔥", rating: 4.6 },
+            { id: 4, name: "Chess Online", category: "strategy", image: "♟️", rating: 4.5 },
+            { id: 5, name: "Clash Royale", category: "strategy", image: "👑", rating: 4.4 },
+            { id: 6, name: "Genshin Impact", category: "rpg", image: "⚔️", rating: 4.9 },
+            { id: 7, name: "FIFA Mobile", category: "sports", image: "⚽", rating: 4.3 },
+            { id: 8, name: "NBA 2K Mobile", category: "sports", image: "🏀", rating: 4.2 }
+        ];
+
+        // Sample testimonials
+        const testimonials = [
+            { name: "Ahmad", message: "Platform gaming terbaik! Turnamennya seru banget.", rating: 5 },
+            { name: "Sari", message: "Komunitas yang ramah dan game yang lengkap.", rating: 5 },
+            { name: "Budi", message: "Hadiah turnamennya menggiurkan, recommended!", rating: 4 },
+            { name: "Lisa", message: "Interface yang user-friendly dan mudah digunakan.", rating: 5 },
+            { name: "Rudi", message: "Customer service yang responsif dan helpful.", rating: 4 }
+        ];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSDKs();
+            initializeAnimations();
+            initializeCounters();
+            initializeGamesGrid();
+            initializeTestimonials();
+            initializeChatbot();
+            initializeEventListeners();
+            initializeParallax();
+        });
+
+        // Animation initialization
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Counter animation
+        function initializeCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const increment = target / 100;
+                        let current = 0;
+                        
+                        const updateCounter = () => {
+                            if (current < target) {
+                                current += increment;
+                                counter.textContent = Math.floor(current).toLocaleString();
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString();
+                            }
+                        };
+                        
+                        updateCounter();
+                        observer.unobserve(counter);
+                    }
+                });
+            });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // Games grid initialization
+        function initializeGamesGrid() {
+            const gamesGrid = document.getElementById('games-grid');
+            
+            function renderGames(games) {
+                gamesGrid.innerHTML = games.map(game => `
+                    <div class="game-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg" data-category="${game.category}">
+                        <div class="text-6xl mb-4 text-center">${game.image}</div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">${game.name}</h3>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500 capitalize">${game.category}</span>
+                            <div class="flex items-center">
+                                <span class="text-yellow-400">⭐</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 ml-1">${game.rating}</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg transition-colors">
+                            Play Now
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            renderGames(gamesData);
+
+            // Filter functionality
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('active', 'bg-purple-600', 'text-white');
+                        b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                    });
+                    btn.classList.add('active', 'bg-purple-600', 'text-white');
+                    btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+
+                    // Filter games
+                    const filter = btn.getAttribute('data-filter');
+                    const filteredGames = filter === 'all' ? gamesData : gamesData.filter(game => game.category === filter);
+                    renderGames(filteredGames);
+                });
+            });
+        }
+
+        // Testimonials carousel
+        function initializeTestimonials() {
+            const container = document.getElementById('testimonial-container');
+            const testimonialHTML = testimonials.map(testimonial => `
+                <div class="flex-shrink-0 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg w-80 mx-4">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                            ${testimonial.name[0]}
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800 dark:text-white">${testimonial.name}</h4>
+                            <div class="flex">
+                                ${'⭐'.repeat(testimonial.rating)}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">"${testimonial.message}"</p>
+                </div>
+            `).join('');
+            
+            // Duplicate for seamless loop
+            container.innerHTML = testimonialHTML + testimonialHTML;
+        }
+
+        // Chatbot functionality
+        function initializeChatbot() {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotWindow = document.getElementById('chatbot-window');
+            const chatbotClose = document.getElementById('chatbot-close');
+            const chatbotInput = document.getElementById('chatbot-input');
+            const chatbotSend = document.getElementById('chatbot-send');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+
+            const responses = {
+                'hello': 'Hi! How can I help you with gaming today?',
+                'games': 'We have hundreds of games across all genres. What type of game are you looking for?',
+                'tournament': 'We host weekly tournaments with great prizes. Check our tournaments section!',
+                'help': 'I can help you with games, tournaments, account issues, and general questions.',
+                'default': 'Thanks for your message! Our team will get back to you soon.'
+            };
+
+            chatbotToggle.addEventListener('click', () => {
+                chatbotWindow.classList.toggle('hidden');
+            });
+
+            chatbotClose.addEventListener('click', () => {
+                chatbotWindow.classList.add('hidden');
+            });
+
+            function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (!message) return;
+
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'text-right mb-2';
+                userMessage.innerHTML = `<div class="bg-purple-600 text-white p-3 rounded-lg inline-block max-w-xs">${message}</div>`;
+                chatbotMessages.appendChild(userMessage);
+
+                // Generate bot response
+                const lowerMessage = message.toLowerCase();
+                let response = responses.default;
+                
+                for (const key in responses) {
+                    if (lowerMessage.includes(key)) {
+                        response = responses[key];
+                        break;
+                    }
+                }
+
+                // Add bot response
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'mb-2';
+                    botMessage.innerHTML = `<div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg inline-block max-w-xs text-gray-800 dark:text-white">${response}</div>`;
+                    chatbotMessages.appendChild(botMessage);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }, 1000);
+
+                chatbotInput.value = '';
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            chatbotSend.addEventListener('click', sendMessage);
+            chatbotInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+        }
+
+        // Event listeners
+        function initializeEventListeners() {
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+
+            // Language switcher
+            const languageSwitcher = document.getElementById('language-switcher');
+            languageSwitcher.addEventListener('change', (e) => {
+                currentLanguage = e.target.value;
+                updateLanguage();
+            });
+
+            // Mobile menu
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+
+            // Contact form
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('contact-submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+
+                const formData = {
+                    id: Date.now().toString(),
+                    type: 'contact',
+                    name: document.getElementById('contact-name').value,
+                    email: document.getElementById('contact-email').value,
+                    game_category: document.getElementById('contact-category').value,
+                    message: document.getElementById('contact-message').value,
+                    timestamp: new Date().toISOString()
+                };
+
+                if (window.dataSdk && allData.length < 999) {
+                    const result = await window.dataSdk.create(formData);
+                    if (result.isOk) {
+                        showNotification('Message sent successfully!', 'success');
+                        contactForm.reset();
+                    } else {
+                        showNotification('Failed to send message. Please try again.', 'error');
+                    }
+                } else if (allData.length >= 999) {
+                    showNotification('Maximum limit reached. Please try again later.', 'error');
+                } else {
+                    showNotification('Message sent successfully!', 'success');
+                    contactForm.reset();
+                }
+
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+
+            // Feedback form
+            const feedbackForm = document.getElementById('feedback-form');
+            const ratingStars = document.querySelectorAll('.star');
+            
+            ratingStars.forEach(star => {
+                star.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentRating = parseInt(star.getAttribute('data-rating'));
+                    updateStars();
+                });
+            });
+
+            feedbackForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                if (currentRating === 0) {
+                    showNotification('Please select a rating', 'error');
+                    return;
+                }
+
+                const submitBtn = document.getElementById('feedback-submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Submitting...';
+                submitBtn.disabled = true;
+
+                const feedbackData = {
+                    id: Date.now().toString(),
+                    type: 'feedback',
+                    name: 'Anonymous',
+                    email: '',
+                    message: document.getElementById('feedback-message').value,
+                    rating: currentRating,
+                    game_category: 'feedback',
+                    timestamp: new Date().toISOString()
+                };
+
+                if (window.dataSdk && allData.length < 999) {
+                    const result = await window.dataSdk.create(feedbackData);
+                    if (result.isOk) {
+                        showNotification('Thank you for your feedback!', 'success');
+                        feedbackForm.reset();
+                        currentRating = 0;
+                        updateStars();
+                    } else {
+                        showNotification('Failed to submit feedback. Please try again.', 'error');
+                    }
+                } else if (allData.length >= 999) {
+                    showNotification('Maximum limit reached. Please try again later.', 'error');
+                } else {
+                    showNotification('Thank you for your feedback!', 'success');
+                    feedbackForm.reset();
+                    currentRating = 0;
+                    updateStars();
+                }
+
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Parallax effect
+        function initializeParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax');
+                
+                parallaxElements.forEach(element => {
+                    const speed = 0.5;
+                    element.style.setProperty('--scroll-y', `${scrolled * speed}px`);
+                });
+            });
+        }
+
+        // Helper functions
+        function updateLanguage() {
+            const navLinks = document.querySelectorAll('nav a');
+            const translations_current = translations[currentLanguage];
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && translations_current) {
+                    const key = href.replace('#', '');
+                    if (translations_current[key]) {
+                        link.textContent = translations_current[key];
+                    }
+                }
+            });
+        }
+
+        function updateStars() {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                if (index < currentRating) {
+                    star.classList.add('text-yellow-400');
+                    star.classList.remove('text-gray-300');
+                } else {
+                    star.classList.add('text-gray-300');
+                    star.classList.remove('text-yellow-400');
+                }
+            });
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            } text-white`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        function updateDataDisplay() {
+            // This function can be used to display stored data if needed
+            console.log('Data updated:', allData.length, 'records');
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99f5fb3be42cfc0c',t:'MTc2MzI4NTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
